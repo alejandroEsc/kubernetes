@@ -193,6 +193,7 @@ __custom_func() {
    * secrets
    * serviceaccounts (aka 'sa')
    * services (aka 'svc')
+   * deployment-configurations (aka 'dcs')
 `
 	usage_template = `{{if gt .Aliases 0}}
 
@@ -333,6 +334,7 @@ Find more information at https://github.com/kubernetes/kubernetes.`,
 	cmds.AddCommand(NewCmdVersion(f, out))
 	cmds.AddCommand(NewCmdApiVersions(f, out))
 	cmds.AddCommand(NewCmdOptions(out))
+	cmds.AddCommand(NewCmdDeploymentConfigs(f, out))
 
 	return cmds
 }

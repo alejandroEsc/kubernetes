@@ -70,8 +70,8 @@ else
   # The server platform we are building on.
   KUBE_SERVER_PLATFORMS=(
     linux/amd64
-    linux/arm
-    linux/arm64
+    #linux/arm
+    #linux/arm64
   )
   if [[ "${KUBE_BUILD_PPC64LE:-}" =~ ^[yY]$ ]]; then
     KUBE_SERVER_PLATFORMS+=(linux/ppc64le)
@@ -82,13 +82,13 @@ else
   # in 'build/build-image/cross/Dockerfile'. However, it's only a bit faster since go 1.5, not mandatory
   KUBE_CLIENT_PLATFORMS=(
     linux/amd64
-    linux/386
-    linux/arm
-    linux/arm64
+    #linux/386
+    #linux/arm
+    #linux/arm64
     darwin/amd64
-    darwin/386
-    windows/amd64
-    windows/386
+    #darwin/386
+    #windows/amd64
+    #windows/386
   )
   if [[ "${KUBE_BUILD_PPC64LE:-}" =~ ^[yY]$ ]]; then
     KUBE_CLIENT_PLATFORMS+=(linux/ppc64le)
@@ -99,8 +99,8 @@ else
   readonly KUBE_TEST_PLATFORMS=(
     linux/amd64
     darwin/amd64
-    windows/amd64
-    linux/arm
+    #windows/amd64
+    #linux/arm
   )
 fi
 

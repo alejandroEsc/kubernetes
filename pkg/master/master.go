@@ -342,6 +342,7 @@ func (m *Master) initV1ResourcesStorage(c *Config) {
 	persistentVolumeStorage, persistentVolumeStatusStorage := pvetcd.NewREST(restOptions("persistentVolumes"))
 	persistentVolumeClaimStorage, persistentVolumeClaimStatusStorage := pvcetcd.NewREST(restOptions("persistentVolumeClaims"))
 	configMapStorage := configmapetcd.NewREST(restOptions("configMaps"))
+	deploymentConfigMapStorage := configmapetcd.NewREST(restOptions("deploymentConfigMaps"))
 
 	namespaceStorage, namespaceStatusStorage, namespaceFinalizeStorage := namespaceetcd.NewREST(restOptions("namespaces"))
 	m.namespaceRegistry = namespace.NewRegistry(namespaceStorage)
@@ -440,6 +441,8 @@ func (m *Master) initV1ResourcesStorage(c *Config) {
 		"configMaps":                    configMapStorage,
 
 		"componentStatuses": componentstatus.NewStorage(func() map[string]apiserver.Server { return m.getServersToValidate(c) }),
+
+		"deploymentConfigs":            deploymentConfigMapStorage,
 	}
 	if registered.IsEnabledVersion(unversioned.GroupVersion{Group: "autoscaling", Version: "v1"}) {
 		m.v1ResourcesStorage["replicationControllers/scale"] = controllerStorage.Scale

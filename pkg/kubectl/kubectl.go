@@ -163,6 +163,7 @@ var shortForms = map[string]string{
 	"rs":     "replicasets",
 	"sa":     "serviceaccounts",
 	"svc":    "services",
+	"dcs":    "deployment-configurations",
 }
 
 // Look-up for resource short forms by value
