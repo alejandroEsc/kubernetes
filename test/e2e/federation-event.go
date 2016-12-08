@@ -84,7 +84,7 @@ func createEventOrFail(clientset *federation_release_1_5.Clientset, namespace st
 		},
 		Source: v1.EventSource{
 			Component: "kubelet",
-			Host:      "kublet.node1",
+			Host:      "kubelet.node1",
 		},
 		Count: 1,
 		Type:  v1.EventTypeNormal,
